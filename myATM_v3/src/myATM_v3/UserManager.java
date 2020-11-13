@@ -14,12 +14,13 @@ public class UserManager {
 	
 	void printAllUserInfo() {
 		if(userCount > 0) {
-			System.out.printf("id\tpassword\tAccountInfo");
+			System.out.printf("id\tpassword\t\tAccountInfo");
 			for (int i = 0; i < userCount; i++) {
 				System.out.printf("\n%s\t%s\t", userList[i].id, userList[i].password);
 				if(userList[i].accCount > 0) {
 					for (int j = 0; j < userList[i].accCount; j++) {
-						System.out.printf("%s : %d\t", userList[i].accList[j].number, userList[i].accList[j].money);
+						if(j > 0) System.out.print("\n\t\t");
+						System.out.printf("\t\t%s : %d\t", userList[i].accList[j].number, userList[i].accList[j].money);
 					}
 					System.out.println();
 				}
@@ -36,8 +37,7 @@ public class UserManager {
 			String[] c = {"s", "t", "u", "w", "v", "o", "x", "n", "q", "p", "r"};
 			String[] d = {"1", "8", "9", "4"};
 			String[] e = {"2", "7", "0", "6"};
-			String[] f = {"5", "3", "2", "7"};
-			nextInt(90000000) + 10000001  */
+			String[] f = {"5", "3", "2", "7"};*/
 		
 	}
 	
@@ -80,6 +80,8 @@ public class UserManager {
 	}
 	
 	void leaveUser() {
+		// *****************************
+		// 계좌가 있는경우 잔액을 돌려준다 
 		while(true) {
 			System.out.print("[탈퇴] PW (뒤로가기는 -1): ");
 			String myPw = ATM.scan.next();
@@ -145,7 +147,7 @@ public class UserManager {
 	
 	void afterLoginMenu() {
 		while(true) {
-			System.out.println("[1]계좌생성 [2]입금하기 [3]출금하기 [4]이체하기 [5]계좌조회 "
+			System.out.println("\n[1]계좌생성 [2]입금하기 [3]출금하기 [4]이체하기 [5]계좌조회 "
 					+ "[6]계좌삭제 [7]회원탈퇴 [0]뒤로가기");
 			System.out.print("메뉴를 선택하세요 : ");
 			int sel = ATM.scan.nextInt();
