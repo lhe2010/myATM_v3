@@ -11,7 +11,7 @@ public class UserManager {
 	User[] userList;
 	int userCount;
 	int identifier;
-	
+		
 	void printAllUserInfo() {
 		if(userCount > 0) {
 			System.out.printf("id\tpassword\t\tAccountInfo");
@@ -22,7 +22,6 @@ public class UserManager {
 						if(j > 0) System.out.print("\n\t\t");
 						System.out.printf("\t\t%s : %d\t", userList[i].accList[j].number, userList[i].accList[j].money);
 					}
-					System.out.println();
 				}
 			}
 		} else {
@@ -32,12 +31,12 @@ public class UserManager {
 	
 	void setDummy() {
 		
-		/*	String[] a = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"};
-			String[] b = {"l", "b", "c", "m", "e", "f", "g", "n", "i", "p", "k"};
-			String[] c = {"s", "t", "u", "w", "v", "o", "x", "n", "q", "p", "r"};
-			String[] d = {"1", "8", "9", "4"};
-			String[] e = {"2", "7", "0", "6"};
-			String[] f = {"5", "3", "2", "7"};*/
+		String[] a = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"};
+		String[] b = {"l", "b", "c", "m", "e", "f", "g", "n", "i", "p", "k"};
+		String[] c = {"s", "t", "u", "w", "v", "o", "x", "n", "q", "p", "r"};
+		String[] d = {"1", "8", "9", "4"};
+		String[] e = {"2", "7", "0", "6"};
+		String[] f = {"5", "3", "2", "7"};
 		
 	}
 	
@@ -77,6 +76,7 @@ public class UserManager {
 		}
 		userList[userCount++] = new User(tempId, tempPw);
 		System.out.println("[메세지] " + tempId + "님 환영합니다.");
+		FileManager.getInstance().saveData();
 	}
 	
 	void leaveUser() {
@@ -109,6 +109,7 @@ public class UserManager {
 				return;
 			}
 		}
+		FileManager.getInstance().saveData();
 	}
 	
 	void loginUser() {

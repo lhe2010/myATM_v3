@@ -44,6 +44,7 @@ public class AccountManager {
 		}
 		currUsr.accList[currUsr.accCount++] = newAcc;
 		System.out.printf("[메세지] %s님 앞으로 계좌(%s)생성완료\n", currUsr.id, newAcc.number);
+		FileManager.getInstance().saveData();
 	}
 	
 	void deleteAcc() {
@@ -78,7 +79,8 @@ public class AccountManager {
 			temp = null;		
 		}
 		currUsr.accCount--;
-		System.out.printf("[메세지] %s님 앞으로 계좌(%s)삭제완료\n", currUsr.id, inputAcc);
+		System.out.printf("[메세지] %s님 앞으로 계좌(%s)삭제완료\n", currUsr.id, inputAcc);		
+		FileManager.getInstance().saveData();
 	}
 
 	int checkAcc(String transAcc) {
@@ -124,6 +126,7 @@ public class AccountManager {
 		currUsr.accList[target].money += inputMoney;
 		
 		System.out.printf("[메세지] %s님의 %s계좌에 %d원을 입금완료\n", currUsr.id, currUsr.accList[target].number, inputMoney);
+		FileManager.getInstance().saveData();
 	}
 	
 	void outcome() {
@@ -154,6 +157,7 @@ public class AccountManager {
 		// 출금 가능한 금액 이면
 		currUsr.accList[target].money -= outputMoney;
 		System.out.printf("[메세지] %s님의 %s계좌에 %d원을 출금완료\n", currUsr.id, currUsr.accList[target].number, outputMoney);
+		FileManager.getInstance().saveData();
 	}
 	
 	void transfer() {
@@ -196,6 +200,7 @@ public class AccountManager {
 		System.out.printf("[메세지] %s님의 %s계좌에서\n%s님의 %s계좌로 %d원을 이체완료\n",
 				currUsr.id, currUsr.accList[outputAccIdx].number, 
 				userManager.userList[transUsrIdx].id, userManager.userList[transUsrIdx].accList[transAccIdx].number, outputMoney);
+		FileManager.getInstance().saveData();
 	}
 	
 	void lookUpAcc () {
